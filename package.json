@@ -1,0 +1,28 @@
+{
+  "name": "ml-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shinlun/ml-api.git"
+  },
+  "author": "Ronan Letellier",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Shinlun/ml-api/issues"
+  },
+  "homepage": "https://github.com/Shinlun/ml-api#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "pg": "^4.5.3",
+    "pg-hstore": "^2.3.2",
+    "require": "^2.4.20",
+    "sequelize": "^3.21.0",
+    "sequelize-cli": "^2.3.1"
+  }
+}

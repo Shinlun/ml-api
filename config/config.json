@@ -1,0 +1,12 @@
+{
+  "development": {
+    "db": {
+      "dialect": "postgres",
+      "host": "localhost",
+      "user": "ml-api",
+      "password": "ml-api",
+      "port": 5432,
+      "name": "ml-api"
+    }
+  }
+}

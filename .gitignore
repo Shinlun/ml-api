@@ -1,0 +1,14 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+tmp
+
+# Dependencies
+node_modules
+
+# Custom environment files
+.env-prod
+
+# WebStorm
+.idea
