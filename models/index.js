@@ -10,7 +10,7 @@ const relations = require('./relations')
 let sequelize
 let db = {}
 
-sequelize = new Sequelize(`${dbconf.dialect}://${dbconf.user}:${dbconf.password}@${dbconf.host}:${dbconf.port}/${dbconf.name}`)
+sequelize = new Sequelize(`${dbconf.dialect}://${dbconf.user}:${dbconf.password}@${dbconf.host}:${dbconf.port}/${dbconf.name}`, { define: dbconf.define })
 
 fs
   .readdirSync(__dirname)

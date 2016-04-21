@@ -3,10 +3,13 @@
     "db": {
       "dialect": "postgres",
       "host": "localhost",
-      "user": "ml-api",
-      "password": "ml-api",
+      "user": "ml_dev",
+      "password": "ml_dev",
       "port": 5432,
-      "name": "ml-api"
+      "name": "ml_dev",
+      "define": {
+        "underscored": true
+      }
     }
   }
 }
