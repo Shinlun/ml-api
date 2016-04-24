@@ -1,0 +1,9 @@
+{
+  "USERS": {
+    "LOGIN": {
+      "MISSING_PARAMETERS": "Veuillez indiquer un email et un mot de passe",
+      "WRONG_EMAIL": "Adresse email incorrecte",
+      "WRONG_PASSWORD": "Mot de passe incorrect"
+    }
+  }
+}
