@@ -366,7 +366,6 @@ ALTER TABLE users OWNER TO ml_dev;
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ml_dev
 --
 
-INSERT INTO users VALUES ('d1040350-cfd5-412b-b1c6-a1b84fbf19a9', 'Ronan', 'Letellier', 'ronanlet@gmail.com', 'password', '1988-10-01 00:00:00', NULL, 'M', true, '2016-04-18 21:39:58.897537', '2016-04-18 21:39:58.897537', NULL);
 
 
 --
