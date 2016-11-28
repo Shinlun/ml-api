@@ -2,7 +2,7 @@
 
 module.exports = function (sequelize) {
   const models = sequelize.models
-
+  
   // users relations
   models.users.hasMany(models.comments, { foreignKey: 'author_id' })
 

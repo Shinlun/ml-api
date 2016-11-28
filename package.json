@@ -19,7 +19,10 @@
   "homepage": "https://github.com/Shinlun/ml-api#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "crypto": "0.0.3",
     "express": "^4.13.4",
+    "i18next": "^2.5.1",
+    "i18next-sync-fs-backend": "^0.1.0",
     "oauth2-server": "^2.4.1",
     "pg": "^4.5.3",
     "pg-hstore": "^2.3.2",
