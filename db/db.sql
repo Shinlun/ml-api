@@ -2,27 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.2
--- Dumped by pg_dump version 9.5.2
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- Name: ml_dev; Type: DATABASE; Schema: -; Owner: postgres
---
-
-CREATE DATABASE ml_dev WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'French_France.1252' LC_CTYPE = 'French_France.1252';
-
-
-ALTER DATABASE ml_dev OWNER TO postgres;
-
-\connect ml_dev
+-- Dumped from database version 9.5.4
+-- Dumped by pg_dump version 9.5.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -281,6 +262,18 @@ CREATE TABLE relationships (
 ALTER TABLE relationships OWNER TO ml_dev;
 
 --
+-- Name: sessions; Type: TABLE; Schema: public; Owner: ml_dev
+--
+
+CREATE TABLE sessions (
+    id uuid NOT NULL,
+    user_id uuid NOT NULL
+);
+
+
+ALTER TABLE sessions OWNER TO ml_dev;
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: ml_dev
 --
 
@@ -301,72 +294,6 @@ CREATE TABLE users (
 
 
 ALTER TABLE users OWNER TO ml_dev;
-
---
--- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: conversations; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: conversations_users; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: events_groups; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: events_users; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: groups_users; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: relationships; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
 
 --
 -- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: ml_dev
@@ -414,6 +341,14 @@ ALTER TABLE ONLY messages
 
 ALTER TABLE ONLY relationships
     ADD CONSTRAINT relationships_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: ml_dev
+--
+
+ALTER TABLE ONLY sessions
+    ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
 
 
 --
@@ -542,6 +477,14 @@ ALTER TABLE ONLY conversations_users
 
 ALTER TABLE ONLY messages
     ADD CONSTRAINT user_fkey FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL;
+
+
+--
+-- Name: user_fkey; Type: FK CONSTRAINT; Schema: public; Owner: ml_dev
+--
+
+ALTER TABLE ONLY sessions
+    ADD CONSTRAINT user_fkey FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 
 
 --
