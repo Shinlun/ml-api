@@ -1,15 +1,14 @@
-'use strict'
-
-const models = require('../../models')
-const passwd = require('../../helpers/password')
+const UserDAO = require('models/UserDAO')
+const passwd = require('helpers/password')
+const UserError = require('errors').UserError
+const ClientError = require('errors').ClientError
 
 module.exports = (payload) => {
-  if (!payload.email || !payload.password) throw new Error('USERS.LOGIN.MISSING_PARAMETERS')
+  if (!payload.email || !payload.password) throw new ClientError('USERS.LOGIN.MISSING_PARAMETERS')
 
-  return models.users.findOne({ where: { email: payload.email } })
+  return UserDAO.getByEmail(payload.email)
     .then((user) => {
-      if (!user) throw new Error('USERS.LOGIN.WRONG_EMAIL')
-      if (!passwd.checkPassword(payload.password, user.password)) throw new Error('USERS.LOGIN.WRONG_PASSWORD')
+      if (!passwd.checkPassword(payload.password, user.password)) throw new UserError('USERS.LOGIN.WRONG_PASSWORD')
 
       return user
     })

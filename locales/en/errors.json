@@ -4,6 +4,7 @@
       "MISSING_PARAMETERS": "Please provide an email and password",
       "WRONG_EMAIL": "Incorrect email address",
       "WRONG_PASSWORD": "Incorrect password"
-    }
+    },
+    "NOT_FOUND": "User not found"
   }
 }
