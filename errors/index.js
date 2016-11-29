@@ -12,4 +12,5 @@ const createError = function (name) {
 
 module.exports.ClientError = createError('ClientError')
 module.exports.DatabaseError = createError('DatabaseError')
+module.exports.SessionError = createError('SessionError')
 module.exports.UserError = createError('UserError')

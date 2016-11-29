@@ -21,6 +21,7 @@
     "body-parser": "^1.15.0",
     "crypto": "0.0.3",
     "express": "^4.13.4",
+    "express-session": "^1.14.2",
     "i18next": "^2.5.1",
     "i18next-sync-fs-backend": "^0.1.0",
     "pg-promise": "^5.4.4",
