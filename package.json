@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Shinlun/ml-api#readme",
   "dependencies": {
+    "app-module-path": "^2.1.0",
     "body-parser": "^1.15.0",
     "crypto": "0.0.3",
     "express": "^4.13.4",

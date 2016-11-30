@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const UserDAO = require('models/UserDAO')
+const UserDAO = require('models/userDAO')
 const ClientError = require('errors').ClientError
 
 router.route('/login')

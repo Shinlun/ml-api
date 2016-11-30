@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const EventDAO = require('models/EventDAO')
+const EventDAO = require('models/eventDAO')
 
 router.route('/api/events')
   .get((req, res, next) => {

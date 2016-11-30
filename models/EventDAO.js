@@ -1,4 +1,4 @@
-const Db = require('models/Database')
+const Db = require('models/database')
 
 module.exports = {
   getAll (limit = 10) {

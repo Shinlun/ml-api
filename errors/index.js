@@ -1,5 +1,5 @@
 const util = require('util')
-const AbstractError = require('errors/AbstractError')
+const AbstractError = require('errors/abstractError')
 
 const createError = function (name) {
   const error = function (msg) {
