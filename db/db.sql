@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.2
--- Dumped by pg_dump version 9.5.2
+-- Dumped from database version 9.5.4
+-- Dumped by pg_dump version 9.5.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -69,10 +69,11 @@ SET search_path = public, pg_catalog;
 CREATE TYPE event_type AS ENUM (
     'birth',
     'engagement',
-    'mariage',
+    'marriage',
     'death',
     'holidays',
     'announcement',
+    'news',
     'other'
 );
 
@@ -301,72 +302,6 @@ CREATE TABLE users (
 
 
 ALTER TABLE users OWNER TO ml_dev;
-
---
--- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: conversations; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: conversations_users; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: events_groups; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: events_users; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: groups_users; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: relationships; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
-
---
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ml_dev
---
-
-
 
 --
 -- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: ml_dev

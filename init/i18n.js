@@ -1,5 +1,3 @@
-'use strict'
-
 const i18next = require('i18next')
 const Backend = require('i18next-sync-fs-backend')
 

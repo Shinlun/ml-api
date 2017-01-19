@@ -1,7 +1,10 @@
-'use strict'
+require('app-module-path/register')
 
-const app = require('./app')
+const app = require('app')
+const config = require('settings')
 
-app.listen(3000, () => {
-  console.log('Server listening on port 3000...')
+sessions = []
+
+app.listen(config.server.port, () => {
+  console.log(`Server listening on port ${config.server.port}...`)
 })

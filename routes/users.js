@@ -1,26 +1,30 @@
-'use strict'
-
 const express = require('express')
 const router = express.Router()
 
-const models = require('../models')
-const Login = require('../mutations/users/login')
+const UserDAO = require('models/userDAO')
+const ClientError = require('errors').ClientError
 
 router.route('/login')
   .post((req, res, next) => {
-    return Login(req.body)
+    if (!req.body.email || !req.body.password) throw new ClientError('USERS.LOGIN.MISSING_PARAMETERS')
+
+    return UserDAO.login(req.body.email, req.body.password)
       .then((user) => {
-        return res.status(200).render(user)
+        req.session.user = user
+        return res.status(200).render('users/private', user)
       })
       .catch(next)
   })
 
 router.route('/api/users')
   .get((req, res, next) => {
-    return models.users.findAll()
-      .then((users) => {
-        return res.status(200).json(users)
-      })
+    return res.status(200).json('YES! GOOD USER! YES!')
+  })
+
+router.route('/logout')
+  .get((req, res, next) => {
+    req.session.destroy()
+    return res.sendStatus(200)
   })
 
 module.exports = router

@@ -10,5 +10,8 @@ node_modules
 # Custom environment files
 .env-prod
 
+# Database dump with inserts
+db/db_inserts.sql
+
 # WebStorm
 .idea

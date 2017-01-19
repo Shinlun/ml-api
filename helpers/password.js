@@ -1,6 +1,4 @@
-'use strict'
-
-const config = require('../init/config.js')
+const config = require('settings.js')
 const crypto = require('crypto')
 
 let hashPassword = (password) => {
@@ -8,7 +6,6 @@ let hashPassword = (password) => {
 }
 
 let checkPassword = (password, hashed_password) => {
-  console.log('password: ' + hashPassword('password'))
   return (hashed_password === hashPassword(password))
 }
 
