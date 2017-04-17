@@ -1,9 +1,9 @@
 const util = require('util')
-const AbstractError = require('errors/abstractError')
+const AbstractError = require('errors/AbstractError')
 
 const createError = function (name) {
-  const error = function (msg) {
-    error.super_.call(this, msg, this.constructor)
+  const error = function (msg, code) {
+    error.super_.call(this, msg, code, this.constructor)
   }
   util.inherits(error, AbstractError)
   error.prototype.name = name

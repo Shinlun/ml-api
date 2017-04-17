@@ -19,6 +19,13 @@ app.use(session({
   }
 }))
 
+// CORS
+/* app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+}) */
+
 app.engine('js', (path, item, cb) => {
   const template = require(`${path}`)
   return Promise.resolve()
@@ -42,5 +49,14 @@ app.all('/api/*', (req, res, next) => {
 })
 
 app.use('/', routes)
+
+app.use((err, req, res, next) => {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' })
+  } else {
+    console.log(err)
+    res.status(err.code).send(err.toObject())
+  }
+})
 
 module.exports = app

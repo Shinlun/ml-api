@@ -10,7 +10,8 @@ i18next
     load: 'languageOnly',
     backend: {
       loadPath: './locales/{{ lng }}/{{ ns }}.json'
-    }
+    },
+    debug: true
   }, (error) => {
     if (error) console.log(error)
   })

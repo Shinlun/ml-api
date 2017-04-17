@@ -6,7 +6,7 @@ module.exports = {
   login (email, password) {
     return this.getByEmail(email)
       .then((user) => {
-        if (!passwd.checkPassword(password, user.password)) throw new UserError('USERS.LOGIN.WRONG_PASSWORD')
+        if (!passwd.checkPassword(password, user.password)) throw new UserError('USERS.LOGIN.WRONG_PASSWORD', 418)
 
         return user
       })
@@ -17,7 +17,7 @@ module.exports = {
       email: email
     })
       .then((user) => {
-        if (!user) throw new UserError('USERS.NOT_FOUND')
+        if (!user) throw new UserError('USERS.NOT_FOUND', 404)
 
         return user
       })
