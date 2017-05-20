@@ -3,7 +3,7 @@ const Db = require('models/database')
 module.exports = {
   getAll (limit = 10) {
     return Db.query(`
-      SELECT e.id, e.type, e.title, e.body, e.date, e.created_at, e.updated_at, u.firstname, u.lastname
+      SELECT e.id, e.type, e.title, e.body, e.date, e.created_at, e.updated_at, u.id as author_id, u.firstname  as author_firstname, u.lastname as author_lastname
       FROM events e
       INNER JOIN users u
       ON e.author_id = u.id
@@ -18,7 +18,7 @@ module.exports = {
 
   getByType (type, limit = 10) {
     return Db.query(`
-      SELECT e.id, e.type, e.title, e.body, e.date, e.created_at, e.updated_at, u.firstname, u.lastname
+      SELECT e.id, e.type, e.title, e.body, e.date, e.created_at, e.updated_at, u.id as author_id, u.firstname  as author_firstname, u.lastname as author_lastname
       FROM events e
       INNER JOIN users u
       ON e.author_id = u.id

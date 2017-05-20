@@ -20,11 +20,12 @@
   "dependencies": {
     "app-module-path": "^2.1.0",
     "body-parser": "^1.15.0",
+    "cors": "^2.8.3",
     "crypto": "0.0.3",
     "express": "^4.13.4",
-    "express-session": "^1.14.2",
     "i18next": "^2.5.1",
     "i18next-sync-fs-backend": "^0.1.0",
+    "jsonwebtoken": "^7.4.1",
     "pg-promise": "^5.4.4",
     "require": "^2.4.20"
   }

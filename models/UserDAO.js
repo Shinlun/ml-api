@@ -6,20 +6,20 @@ module.exports = {
   login (email, password) {
     return this.getByEmail(email)
       .then((user) => {
-        if (!passwd.checkPassword(password, user.password)) throw new UserError('USERS.LOGIN.WRONG_PASSWORD', 418)
+        if (!passwd.checkPassword(password, user.password)) throw new UserError('USERS.LOGIN.WRONG_PASSWORD', 403)
 
         return user
       })
   },
 
   getByEmail (email) {
-    return Db.one('SELECT * FROM users WHERE email = $/email/', {
+    return Db.query('SELECT * FROM users WHERE email = $/email/', {
       email: email
     })
-      .then((user) => {
-        if (!user) throw new UserError('USERS.NOT_FOUND', 404)
+      .then((users) => {
+        if (users.length === 0) throw new UserError('USERS.NOT_FOUND', 404)
 
-        return user
+        return users[0]
       })
   }
 }

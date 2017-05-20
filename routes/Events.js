@@ -10,7 +10,7 @@ router.route('/api/events')
       ? EventDAO.getByType(req.query.type, limit)
       : EventDAO.getAll(limit))
       .then((events) => {
-        return res.status(200).json(events)
+        return res.status(200).render('events/collection', events)
       })
       .catch(next)
   })

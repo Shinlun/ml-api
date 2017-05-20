@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const JWT = require('jsonwebtoken')
+const config = require('settings')
 
 const UserDAO = require('models/userDAO')
 const ClientError = require('errors').ClientError
@@ -10,8 +12,10 @@ router.route('/login')
 
     return UserDAO.login(req.body.email, req.body.password)
       .then((user) => {
-        req.session.user = user
-        return res.status(200).render('users/private', user)
+        user.token = JWT.sign({ id: user.id }, config.salt, {
+          expiresIn: 1440
+        })
+        return res.status(200).render('users/logged', user)
       })
       .catch(next)
   })

@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
 const body_parser = require('body-parser')
+const cors = require('cors')
 const routes = require('routes/index')
-const session = require('express-session')
+const JWT = require('jsonwebtoken')
+const config = require('settings')
 
 require('init')
 
@@ -10,21 +12,19 @@ app.use(body_parser.urlencoded({ extended: true }))
 
 app.use(body_parser.json())
 
-app.use(session({
-  secret: 'hmmmmnoodlesoup!',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: app.get('env') === 'production'
-  }
-}))
+// CORS
+const corsOptions = {
+  origin: '*',
+  allowedHeaders: [
+    'origin',
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'authorization'
+  ]
+}
 
-// CORS (for testing)
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  next()
-})
+app.use(cors(corsOptions))
 
 app.engine('js', (path, item, cb) => {
   const template = require(`${path}`)
@@ -41,8 +41,14 @@ app.engine('js', (path, item, cb) => {
 app.set('view engine', 'js')
 
 app.all('/api/*', (req, res, next) => {
-  if (req.session.user) {
-    next()
+  console.log(req.headers)
+  if (req.headers.authorization) {
+    JWT.verify(req.headers.authorization, config.salt, (err, decoded) => {
+      if (err) return res.sendStatus(403)
+
+      req.user_id = decoded.id
+      next()
+    })
   } else {
     return res.sendStatus(403)
   }
@@ -55,7 +61,7 @@ app.use((err, req, res, next) => {
     res.status(500).send({ error: 'Something failed!' })
   } else {
     console.log(err)
-    res.status(err.code).send(err.toObject())
+    res.status(err.code ? err.code : 500).send(err.toObject ? err.toObject() : err)
   }
 })
 
