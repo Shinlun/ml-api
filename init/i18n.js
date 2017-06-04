@@ -13,7 +13,7 @@ i18next
     },
     debug: false
   }, (error) => {
-    if (error) console.log(error)
+    if (error) console.error(error)
   })
 
 module.exports = i18next

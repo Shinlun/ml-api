@@ -20,7 +20,7 @@ SET row_security = off;
 CREATE DATABASE ml_dev WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'French_France.1252' LC_CTYPE = 'French_France.1252';
 
 
-ALTER DATABASE ml_dev OWNER TO postgres;
+ALTER DATABASE ml_dev OWNER TO ml_dev;
 
 \connect ml_dev
 
@@ -186,6 +186,7 @@ CREATE TABLE events (
     title character varying(255) NOT NULL,
     body text,
     date timestamp without time zone,
+    recurring boolean DEFAULT false NOT NULL,
     visibility visibility NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL,

@@ -8,12 +8,12 @@ const ClientError = require('errors').ClientError
 
 router.route('/login')
   .post((req, res, next) => {
-    if (!req.body.email || !req.body.password) throw new ClientError('USERS.LOGIN.MISSING_PARAMETERS', 400)
+    if (!req.body.email || !req.body.password) throw new ClientError('CLIENT.MISSING_PARAMETERS', 400)
 
     return UserDAO.login(req.body.email, req.body.password)
       .then((user) => {
         user.token = JWT.sign({ id: user.id }, config.salt, {
-          expiresIn: 1440
+          expiresIn: 86400
         })
         return res.status(200).render('users/logged', user)
       })

@@ -14,6 +14,7 @@ module.exports = (events) => {
       title: ev.title,
       body: ev.body,
       date: ev.date,
+      recurring: ev.recurring,
       created_at: ev.created_at,
       updated_at: ev.updated_at,
       author: {

@@ -41,7 +41,6 @@ app.engine('js', (path, item, cb) => {
 app.set('view engine', 'js')
 
 app.all('/api/*', (req, res, next) => {
-  console.log(req.headers)
   if (req.headers.authorization) {
     JWT.verify(req.headers.authorization, config.salt, (err, decoded) => {
       if (err) return res.sendStatus(403)
@@ -60,7 +59,7 @@ app.use((err, req, res, next) => {
   if (req.xhr) {
     res.status(500).send({ error: 'Something failed!' })
   } else {
-    console.log(err)
+    console.error(err)
     res.status(err.code ? err.code : 500).send(err.toObject ? err.toObject() : err)
   }
 })
