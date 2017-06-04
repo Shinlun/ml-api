@@ -27,7 +27,7 @@ router.route('/api/users')
 
 router.route('/logout')
   .get((req, res, next) => {
-    req.session.destroy()
+    delete req.user_id
     return res.sendStatus(200)
   })
 
