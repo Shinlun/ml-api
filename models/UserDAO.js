@@ -1,4 +1,4 @@
-const Db = require('models/database')
+const Db = require('models/Database')
 const UserError = require('errors').UserError
 const passwd = require('helpers/password')
 

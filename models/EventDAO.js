@@ -1,4 +1,4 @@
-const Db = require('models/database')
+const Db = require('models/Database')
 
 module.exports = {
   getById (id) {
