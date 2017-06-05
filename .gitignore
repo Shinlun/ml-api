@@ -9,6 +9,7 @@ node_modules
 
 # Custom environment files
 .env-prod
+settings.js
 
 # Database dump with inserts
 db/db_inserts.sql
