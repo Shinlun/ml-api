@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const ClientError = require('errors').ClientError
-const EventDAO = require('models/eventDAO')
+const EventDAO = require('models/EventDAO')
 
 router.route('/api/events')
   .get((req, res, next) => {

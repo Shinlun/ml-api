@@ -3,7 +3,7 @@ const router = express.Router()
 const JWT = require('jsonwebtoken')
 const config = require('settings')
 
-const UserDAO = require('models/userDAO')
+const UserDAO = require('models/UserDAO')
 const ClientError = require('errors').ClientError
 
 router.route('/login')
